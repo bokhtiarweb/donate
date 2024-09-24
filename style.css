@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+.common_font {
+    font-family: "Lexend", system-ui;
+    font-optical-sizing: auto;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    margin: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid #1111111a;
+}
+
+main{
+    padding-top: 250px;
+}
+section#donate_section, section#history_section{
+    max-width: 1340px;
+    margin: auto;
+    margin-top: 45px;
+}
+section#history_section{
+    display: none;
+}
+
+
+@media screen and (max-width: 640px) {
+    header{
+        padding-bottom: 12px;
+    }
+    img.logo, img.coin{
+        height: 40px;
+    }
+    .sm_screen{
+        display: none;
+    }
+    .single_amount{
+        margin-top: 20px;
+    }
+}
