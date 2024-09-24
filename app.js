@@ -46,7 +46,8 @@ window.addEventListener('scroll', function() {
 });
 
 
-document.getElementById('handel_donate').addEventListener('click', function() {
+// Dynamic donation functionlity
+function handelDonate(){
     
     const donateAmount = document.getElementById('donate_input');
     const availableAmount = document.getElementById('available_amount');
@@ -55,8 +56,7 @@ document.getElementById('handel_donate').addEventListener('click', function() {
     const rex = donateAmount.value.match(/[^a-zA-Z ]+/);
 
     if(!rex || donateAmount.value.includes('-')){
-        alert('Your provided data is not valid!');
-        return
+        return alert('Your provided data is not valid!');
 
     }else{
 
@@ -71,8 +71,14 @@ document.getElementById('handel_donate').addEventListener('click', function() {
             cardAmount.innerText = singleAmount + makeValid;
             
             donateAmount.value = '';
+            my_modal_1.showModal()
+
         }else{
             return alert('Your provided data is invalid or insufficient!');
         }
     }
-})
+};
+
+// my_modal_1.showModal()
+
+document.getElementById('title')
