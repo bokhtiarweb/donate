@@ -71,7 +71,8 @@ function handelDonate(){
             cardAmount.innerText = singleAmount + makeValid;
             
             donateAmount.value = '';
-            my_modal_1.showModal()
+            my_modal_1.showModal();
+            transationHistory(makeValid);
 
         }else{
             return alert('Your provided data is invalid or insufficient!');
@@ -79,6 +80,16 @@ function handelDonate(){
     }
 };
 
-// my_modal_1.showModal()
+// transation functionlity
+function transationHistory(makeValid){
+    const sectionDiv = document.getElementById('history_section');
+    const name = document.getElementById('title');
 
-document.getElementById('title')
+    sectionDiv.innerHTML += `
+    <div class="p-6 border border-[#1111111a] rounded-xl">
+    <p class='font-semibold text-lg mb-4'>${makeValid} ${name.innerText}</p>
+    <p>Date: ${new Date()}</p>
+    </div>
+    `;
+    //sectionDiv.appendChild(transationHistroy);
+}
