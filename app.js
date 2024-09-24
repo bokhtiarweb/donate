@@ -12,6 +12,9 @@ function openTab(currentTab){
 // Global variable
 let availableTaka = 0;
 let singleAmount = 0;
+let callModal = false;
+
+let availableAmount = document.getElementById('available_amount');
 
 // select donate & history buttons
 const donateBtn = document.getElementById('donate_btn');
@@ -46,12 +49,55 @@ window.addEventListener('scroll', function() {
 });
 
 
-// Dynamic donation functionlity
-function handelDonate(){
-    
-    const donateAmount = document.getElementById('donate_input');
-    const availableAmount = document.getElementById('available_amount');
-    let cardAmount =  document.getElementById('donate_amount');
+// donation card 1
+document.getElementById('donation_btn1').addEventListener('click', function() {
+    const inputValue1 = document.getElementById('donate_input');
+    const donationCard1 = document.getElementById('donate_amount');
+
+    validation(inputValue1, donationCard1);
+
+    if(callModal && inputValue1.value !== ''){
+        my_modal_1.showModal();
+        inputValue1.value = '';
+    }
+});
+
+// donation card 2
+document.getElementById('donation_btn2').addEventListener('click', function() {
+
+    const inputValue2 = document.getElementById('donate_input2');
+    const donationCard2 = document.getElementById('donate_amount2')
+
+    validation(inputValue2, donationCard2);
+
+    if(callModal && inputValue2.value !== ''){
+        my_modal_2.showModal();
+        inputValue2.value = '';
+    }
+});
+
+// donation card 3
+document.getElementById('donation_btn3').addEventListener('click', function() {
+
+    const inputValue3 = document.getElementById('donate_input3');
+    const donationCard3 = document.getElementById('donate_amount3');
+    const rex = inputValue3.value.match(/[^a-zA-Z ]+/);
+
+    validation(inputValue3, donationCard3);
+
+    if((callModal && inputValue3.value !== '') && (!inputValue3.value.includes('-') || inputValue3.value.match(/[^a-zA-Z ]+/))){
+        my_modal_3.showModal();
+        inputValue3.value = '';
+    }
+});
+
+
+// Validation functionlity
+function validation(inputValue, donationCard){
+
+    const donateAmount = inputValue;
+
+    let cardAmount =  donationCard;
 
     const rex = donateAmount.value.match(/[^a-zA-Z ]+/);
 
@@ -70,8 +116,7 @@ function handelDonate(){
             singleAmount = parseFloat(cardAmount.innerText);
             cardAmount.innerText = singleAmount + makeValid;
             
-            donateAmount.value = '';
-            my_modal_1.showModal();
+            callModal = true
             transationHistory(makeValid);
 
         }else{
@@ -79,6 +124,7 @@ function handelDonate(){
         }
     }
 };
+
 
 // transation functionlity
 function transationHistory(makeValid){
@@ -93,3 +139,4 @@ function transationHistory(makeValid){
     `;
     //sectionDiv.appendChild(transationHistroy);
 }
+
