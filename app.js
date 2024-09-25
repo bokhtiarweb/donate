@@ -109,7 +109,7 @@ function validation(inputValue, donationCard){
 
     }else{
 
-        if(!isNaN(parseFloat(donateAmount.value)) && donateAmount.value <= parseFloat(availableAmount.innerText)){
+        if(!isNaN(parseFloat(donateAmount.value)) && donateAmount.value <= parseFloat(availableAmount.innerText) && 0 < donateAmount.value){
             
             let makeValid = parseFloat(donateAmount.value);
             availableTaka = parseFloat(availableAmount.innerText);
@@ -143,6 +143,5 @@ function transationHistory(makeValid, selectedName){
     <p>Date: ${new Date()}</p>
     </div>
     `;
-    //sectionDiv.appendChild(transationHistroy);
 }
 

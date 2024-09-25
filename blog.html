@@ -6,6 +6,9 @@
     <title>Donate Bangladesh</title>
     <link rel="stylesheet" href="style.css">
 
+    <!-- FontAwesome CDN -->
+    <script src="https://kit.fontawesome.com/d9b33aba60.js" crossorigin="anonymous"></script>
+
     <!-- Daisy UI & TailwindCSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -23,9 +26,9 @@
 </head>
 <body class="common_font">
 
-    <!-- <header id="transparent" class="lg:pb-8">
+    <header id="transparent">
         <nav id="nav_transparent" class="bg-[#F9F7F3] flex justify-between items-center px-6 py-4">
-            <a class="btn bg-common text-lg font-semibold" href="blog.html">Blog</a>
+            <a class="btn bg-common text-lg font-semibold" href="/">Home</a>
             <div class="flex justify-between items-center">
                 <img class="logo" src="./assets/logo.png" alt="Logo"/>
                 <span class="text-lg font-semibold ml-4 sm_screen">Donate Bangladesh</span>
@@ -36,35 +39,60 @@
                 <span class="ml-1 font-semibold">BDT</span>
             </div>
         </nav>
-
-        <div class="w-64 mx-auto flex justify-between mt-20">
-            <button id="donate_btn" onclick="openTab('donate_section')" class="btn text-lg font-semibold px-7 border border-[#1111111a]">Donate</button>
-            <button id="history_btn" onclick="openTab('history_section')" class="btn text-lg font-semibold px-7 border border-[#1111111a]">History</button>
-        </div>
-    </header> -->
-
+    </header>
 
     <main>
-      <section>
-        <div class="collapse collapse-arrow bg-base-200">
+      <section id="donate_section" class="p-6">
+        <h2 class="font-bold text-4xl pb-10">Important FAQ <i class="fa-solid fa-comment-dots"></i></h2>
+        
+        <div class="collapse collapse-arrow bg-base-200 border border-[#1111111a]">
           <input type="radio" name="my-accordion-2" checked="checked" />
-          <div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
+          <div class="collapse-title text-xl font-medium">What is the Document Object Model (DOM)?</div>
           <div class="collapse-content">
-            <p>hello</p>
+            <p>Document Object Model (DOM) is programming interface for HTML & XML web documents. It's helps to interact with web page as stucture, style, content and taking form input data</p>
           </div>
         </div>
-        <div class="collapse collapse-arrow bg-base-200">
+        <div class="collapse collapse-arrow bg-base-200 border border-[#1111111a]">
           <input type="radio" name="my-accordion-2" />
-          <div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
+          <div class="collapse-title text-xl font-medium">How do you select an element from the DOM?</div>
           <div class="collapse-content">
-            <p>hello</p>
+            <p>document.getElementById('elementName')</p>
+            <p>document.getElementsByClassName('elementName')</p>
+            <p>document.getElementsByTagName('elementName')</p>
+            <p>document.querySelector('elementName') & etc</p>
           </div>
         </div>
-        <div class="collapse collapse-arrow bg-base-200">
+        <div class="collapse collapse-arrow bg-base-200 border border-[#1111111a]">
           <input type="radio" name="my-accordion-2" />
-          <div class="collapse-title text-xl font-medium">Click to open this one and close others</div>
+          <div class="collapse-title text-xl font-medium">What is event delegation in the context of the DOM, and why is it usefull?</div>
           <div class="collapse-content">
-            <p>hello</p>
+            <p>Event delegation is a technique in DOM that allows you add a event of the parent element instead of individually added event to every children elements. This technique is more helpful and useful and gives you a meaningfull program.</p>
+          </div>
+        </div>
+        <div class="collapse collapse-arrow bg-base-200 border border-[#1111111a]">
+          <input type="radio" name="my-accordion-2" />
+          <div class="collapse-title text-xl font-medium">How do you Manipulate an element's attributes and styles using DOM?</div>
+          <div class="collapse-content">
+            <p>setAttribute() method help you to set a new attributes like href, src, id from DOM</p>
+            <p>To remove an attributes use removeAttribute() method</p>
+            <p>
+              For style a DOM element first select that element. sucs as:
+            </p>
+            <p>
+              document.getElementById('elementName').style.color = 'pink'
+              or
+            </p>
+            <p>
+              document.querySelector('elementName').style.color = 'pink'
+              or
+            </p>
+            <p>
+              document.getElementByTagName('elementName').style.color = 'pink'
+              or
+            </p>
+            <p>
+              document.getElementByClassName('elementName').style.color = 'pink'
+            </p>
           </div>
         </div>
       </section>
@@ -72,6 +100,6 @@
 
     <footer class="bg-[#F9F7F3] h-24 p-8 mt-16"></footer>
 
-    <script src="./app.js"></script>
+    
 </body>
 </html>
