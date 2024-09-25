@@ -1,10 +1,9 @@
 // Make dynamic donate & history secton
 function openTab(currentTab){
-    let i;
     let item = document.getElementsByClassName('tab_section');
 
-    for(i = 0; i < item.length; i++){
-        item[i].style.display = 'none';
+    for(let n = 0; n < item.length; n++){
+        item[n].style.display = 'none';
     }
     document.getElementById(currentTab).style.display = 'block';
 }
@@ -15,6 +14,11 @@ let singleAmount = 0;
 let callModal = false;
 
 let availableAmount = document.getElementById('available_amount');
+
+// Select cards title
+const name1 = document.getElementById('title');
+const name2 = document.getElementById('title2');
+const name3 = document.getElementById('title3');
 
 // select donate & history buttons
 const donateBtn = document.getElementById('donate_btn');
@@ -43,7 +47,7 @@ window.addEventListener('scroll', function() {
         document.getElementById('nav_transparent').style.backgroundColor = `#ddd8d656`;
     
     }else{
-        document.getElementById('transparent').style.backgroundColor = ``;
+        document.getElementById('transparent').style.backgroundColor = '';
         document.getElementById('nav_transparent').style.backgroundColor = `#F9F7F3`;
     }
 });
@@ -81,13 +85,12 @@ document.getElementById('donation_btn3').addEventListener('click', function() {
 
     const inputValue3 = document.getElementById('donate_input3');
     const donationCard3 = document.getElementById('donate_amount3');
-    const rex = inputValue3.value.match(/[^a-zA-Z ]+/);
 
     validation(inputValue3, donationCard3);
 
-    if((callModal && inputValue3.value !== '') && (!inputValue3.value.includes('-') || inputValue3.value.match(/[^a-zA-Z ]+/))){
+    if(callModal && inputValue3.value !== ''){
         my_modal_3.showModal();
-        inputValue3.value = '';
+        inputValue3.value = ''
     }
 });
 
@@ -95,13 +98,13 @@ document.getElementById('donation_btn3').addEventListener('click', function() {
 // Validation functionlity
 function validation(inputValue, donationCard){
 
-    const donateAmount = inputValue;
-
+    let donateAmount = inputValue;
     let cardAmount =  donationCard;
 
     const rex = donateAmount.value.match(/[^a-zA-Z ]+/);
 
     if(!rex || donateAmount.value.includes('-')){
+        callModal = false;
         return alert('Your provided data is not valid!');
 
     }else{
@@ -116,10 +119,14 @@ function validation(inputValue, donationCard){
             singleAmount = parseFloat(cardAmount.innerText);
             cardAmount.innerText = singleAmount + makeValid;
             
-            callModal = true
-            transationHistory(makeValid);
+            callModal = true;
+            // Select card title
+            const selectTitel = donationCard.className == 'donate_amount' ? name1 : donationCard.className == 'donate_amount2' ? name2 : donationCard.className == 'donate_amount3' ? name3 : null;
+
+            transationHistory(makeValid, selectTitel);
 
         }else{
+            callModal = false
             return alert('Your provided data is invalid or insufficient!');
         }
     }
@@ -127,13 +134,12 @@ function validation(inputValue, donationCard){
 
 
 // transation functionlity
-function transationHistory(makeValid){
+function transationHistory(makeValid, selectedName){
     const sectionDiv = document.getElementById('history_section');
-    const name = document.getElementById('title');
 
     sectionDiv.innerHTML += `
     <div class="p-6 border border-[#1111111a] rounded-xl">
-    <p class='font-semibold text-lg mb-4'>${makeValid} ${name.innerText}</p>
+    <p class='font-semibold text-lg mb-4'>${makeValid} ${selectedName.innerText}</p>
     <p>Date: ${new Date()}</p>
     </div>
     `;
